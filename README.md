@@ -1,4 +1,4 @@
-## What are some differences between interfaces and types in TypeScript?
+## 1. What are some differences between interfaces and types in TypeScript?
 
 TypeScript offers both `interface` and `type` aliases to describe the shape of an object or a data structure. While they often overlap in use cases, there are several subtle differences between the two.
 
@@ -41,7 +41,11 @@ const product: Product = {
 };
 ```
 
-## Union Type `(|)`
+## 1. Example of using union and intersection types in TypeScript.
+
+A union type allows a value to be one of multiple types. It's useful when something can be more than one type, but not all at once & An intersection type combines multiple types into one. The resulting type has all the properties of the combined types.
+
+### ✅ Union Type `(|)`
 
 A union type means a variable can hold one of several types.
 
@@ -64,7 +68,7 @@ const pet: Animal = {
 
 In this case, `pet` can be either a Dog or a Cat — not both.
 
-## Intersection Type `(&)`
+### ✅ Intersection Type `(&)`
 
 An intersection type means combining multiple types into one type with all properties.
 
