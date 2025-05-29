@@ -1,39 +1,88 @@
-# TypeScript: Interfaces vs Types & The Power of `keyof`
+## What are some differences between interfaces and types in TypeScript?
 
-Welcome to this TypeScript-focused blog where we explore some of the deeper concepts that make TypeScript a powerful tool for modern web development. In this post, we'll unravel:
+TypeScript offers both `interface` and `type` aliases to describe the shape of an object or a data structure. While they often overlap in use cases, there are several subtle differences between the two.
 
-1. The nuanced differences between **`interface`** and **`type`**
-2. The usage and advantages of the **`keyof`** keyword in TypeScript
+### ✅ Interface
 
-
----
-
-## 📌 Table of Contents
-
-- [Interfaces vs Types](#interfaces-vs-types)
-- [Understanding `keyof`](#understanding-keyof)
-- [Code Examples](#code-examples)
-- [Conclusion](#conclusion)
-
----
-
-## Interfaces vs Types
-
-At first glance, `interface` and `type` in TypeScript seem to serve the same purpose—defining the shape of data. However, they have subtle yet important differences.
-
-### ✅ Use Cases for `interface`
-
-- Preferred for defining object shapes.
-- Supports extension via `extends` and declaration merging.
-- Ideal when building libraries or public APIs.
+An `interface` defines the structure (shape) of an object. It is mostly used to describe objects, especially when working with classes.
 
 ```ts
 interface User {
-  id: number;
   name: string;
+  age: number;
 }
 
 interface Admin extends User {
   role: string;
 }
+
+const adminUser: Admin = {
+  name: "Alice",
+  age: 30,
+  role: "Manager",
+};
 ```
+
+### ✅ Type
+
+A `type` alias can define a type for almost anything: objects, primitives, functions, arrays, unions, and more.
+
+```ts
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
+
+const product: Product = {
+  id: 101,
+  name: "Camera",
+  price: 499,
+};
+```
+
+## Union Type `(|)`
+
+A union type means a variable can hold one of several types.
+
+```ts
+type Dog = {
+  bark: () => void;
+};
+
+type Cat = {
+  meow: () => void;
+};
+
+// Animal can be either a Dog or a Cat
+type Animal = Dog | Cat;
+
+const pet: Animal = {
+  meow: () => console.log("Meow"),
+};
+```
+
+In this case, `pet` can be either a Dog or a Cat — not both.
+
+## Intersection Type `(&)`
+
+An intersection type means combining multiple types into one type with all properties.
+
+```ts
+type Person = {
+  name: string;
+};
+
+type Employee = {
+  employeeId: number;
+};
+
+type Staff = Person & Employee;
+
+const worker: Staff = {
+  name: "Sanjit",
+  employeeId: 1234,
+};
+```
+
+Here, `worker` must satisfy both `Person` and `Employee.`
