@@ -41,7 +41,7 @@ const product: Product = {
 };
 ```
 
-## 1. Example of using union and intersection types in TypeScript.
+## 2. Example of using union and intersection types in TypeScript.
 
 A union type allows a value to be one of multiple types. It's useful when something can be more than one type, but not all at once & An intersection type combines multiple types into one. The resulting type has all the properties of the combined types.
 
